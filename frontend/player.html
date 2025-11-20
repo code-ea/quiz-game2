@@ -151,11 +151,6 @@
             font-weight: bold;
         }
 
-        .bonus {
-            color: #f39c12;
-            font-weight: bold;
-        }
-
         .final-results {
             background: #2c3e50;
             color: white;
@@ -301,8 +296,7 @@
                     ${playerResult.isCorrect ? '✓ Correct!' : '✗ Incorrect'}
                 </span></p>
                 <p>Correct answer: <strong>${String.fromCharCode(65 + data.correctAnswer)}</strong></p>
-                <p>Your score: <strong>${playerResult.score}</strong> 
-                ${playerResult.bonus ? '<span class="bonus">(+5 bonus for fastest!)</span>' : ''}</p>
+                <p>Your score: <strong>${playerResult.score}</strong>
             </div>`;
             
             resultsDiv.innerHTML = html;

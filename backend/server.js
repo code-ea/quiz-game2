@@ -151,20 +151,12 @@ class QuizSession {
   evaluateAnswers() {
     const currentQuestion = questions[this.currentQuestionIndex];
     const results = [];
-    let fastestPlayer = null;
-    let fastestTime = Infinity;
 
     this.players.forEach(player => {
       const isCorrect = player.currentAnswer === currentQuestion.correctAnswer;
-      const answerTime = Date.now() - this.questionStartTime;
       
       if (isCorrect) {
         player.score += 10;
-        // Bonus for fastest correct answer
-        if (answerTime < fastestTime) {
-          fastestTime = answerTime;
-          fastestPlayer = player.id;
-        }
       }
 
       results.push({
@@ -175,16 +167,6 @@ class QuizSession {
         score: player.score
       });
     });
-
-    // Add bonus to fastest correct answer
-    if (fastestPlayer) {
-      this.players.get(fastestPlayer).score += 5;
-      const fastestPlayerResult = results.find(r => r.playerId === fastestPlayer);
-      if (fastestPlayerResult) {
-        fastestPlayerResult.score += 5;
-        fastestPlayerResult.bonus = true;
-      }
-    }
 
     // Broadcast results
     io.to(this.sessionId).emit('questionResults', {

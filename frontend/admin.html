@@ -159,11 +159,6 @@
             font-weight: bold;
         }
 
-        .bonus {
-            color: #f39c12;
-            font-weight: bold;
-        }
-
         .final-results {
             background: #2c3e50;
             color: white;
@@ -296,8 +291,7 @@
                     <span class="${result.isCorrect ? 'correct' : 'incorrect'}">
                         ${result.isCorrect ? '✓ Correct' : '✗ Incorrect'}
                     </span> 
-                    (Score: ${result.score}) 
-                    ${result.bonus ? '<span class="bonus">🏆 Fastest!</span>' : ''}
+                    (Score: ${result.score})
                 </li>`;
             });
             
