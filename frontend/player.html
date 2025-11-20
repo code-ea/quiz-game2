@@ -2,7 +2,10 @@
 <html>
 <head>
     <title>Quiz Player</title>
-    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        // Backend server configuration
+        const BACKEND_URL = 'https://quiz-game2-1.onrender.com'; // CHANGE THIS TO YOUR BACKEND URL
+    </script>
     <style>
         * {
             margin: 0;
@@ -229,9 +232,9 @@
             </div>
         </div>
     </div>
-
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
     <script>
-        const socket = io();
+        const socket = io(BACKEND_URL);
         let playerId = null;
         let sessionId = null;
         let selectedAnswer = null;
